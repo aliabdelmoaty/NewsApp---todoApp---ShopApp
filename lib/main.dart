@@ -1,35 +1,19 @@
 import 'package:bloc/bloc.dart';
-import 'package:conditional_builder_null_safety/example/example.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter2/layout/socialapp/cubit/social_cubit.dart';
-import 'package:flutter2/layout/socialapp/social_layout.dart';
 import 'package:flutter2/layout/todoapp/cubit/cubit.dart';
 import 'package:flutter2/layout/todoapp/cubit/states.dart';
-import 'package:flutter2/models/shopapp/home/home_shop.dart';
-import 'package:flutter2/models/socialapp/feeds/feeds_social.dart';
 import 'package:flutter2/shared/bloc_observer.dart';
 import 'package:flutter2/shared/network/local/cache_helper.dart';
 import 'package:flutter2/shared/network/remote/dio_helper.dart';
 import 'package:flutter2/shared/styles/themes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:intl/intl.dart';
 
 import 'layout/newsapp/Cubit/cubit.dart';
-import 'layout/newsapp/home_layout_news.dart';
+
 import 'layout/shopapp/cubit/cubit.dart';
 import 'layout/shopapp/homeLayout.dart';
-import 'layout/todoapp/home_layout_todo.dart';
-import 'models/shopapp/login/login_Shop.dart';
-import 'models/shopapp/on_boarding/onBoarding.dart';
-import 'models/shopapp/register/registershop.dart';
-import 'models/socialapp/social_login/social_login.dart';
-import 'models/socialapp/social_register/register.dart';
+
 import 'package:firebase_core/firebase_core.dart';
-import 'package:motion_toast/motion_toast.dart';
-import 'shared/components/constants.dart';
 
 // import 'firebase_options.dart';
 void main() async {
@@ -50,28 +34,6 @@ void main() async {
   DioHelper.init();
   await CacheHelper.init();
   bool? isDark = CacheHelper.getData(key: 'isDark');
-  // Widget widget;
-  // bool? onBoarding = CacheHelper.getData(key: 'onBoarding');
-  // token = CacheHelper.getData(key: 'token');
-  //  bool? onBoarding = CacheHelper.getData(key: 'uId');
-
-  // uId = CacheHelper.getData(key: 'uId');
-
-  // print('YOUR UID is: ${uId}');
-
-  //  if (onBoarding != null) {
-  //   if (toKen != null)
-  //     widget = ShopLayout();
-  //   else
-  //     widget = LoginShop();
-  // } else {
-  //   widget = onBoardingScreen();
-  // }
-  // if (uId != null) {
-  //   widget = SocialLayout();
-  // } else {
-  //   widget = SocialLoginScreen();
-  // }
 
   runApp(MyApp(
     isDark: isDark!,
@@ -109,10 +71,6 @@ class MyApp extends StatelessWidget {
               ..getCategoriesData()
               ..getFavorites()
               ..getUserData()
-            //  ..changeAppMode(fromShared: isDark),
-            ),
-        BlocProvider(
-            create: (context) => SocialCubit()..getUserDate()..getPosts()
             //  ..changeAppMode(fromShared: isDark),
             ),
       ],
